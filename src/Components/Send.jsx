@@ -27,14 +27,14 @@ export const Send = () => {
 
         console.log(response)
 
-        if(response.trxError){
-            alert(res.trxError)
-            console.log(trxError)
+        if(response.error){
+            alert(response.error)
+            console.log(response.error, 'error prones')
         }
 
-        else if(response.trxHash){
-            setHash(`${response.trxHash}`)
-            console.log(response.trxHash, 'Clownsss')
+        else if(response.hash){
+            setHash(response.hash)
+            console.log(response.hash, 'Clownsss')
         }
         else{
             setHash('')
@@ -55,12 +55,12 @@ export const Send = () => {
 
             {
                 hash ? (
-                    <div className='w-full h-auto text-sm italic font-bold px-[10pt] md:px-[20pt] py-[5pt]'>
+                    <div className='w-full h-auto text-sm italic font-bold px-[10pt] md:px-[20pt] py-[20pt]'>
                         Transaction is being processed:{' '} 
                         <a 
                             href={`https://sepolia.etherscan.io/tx/${hash}`} 
-                            className='text-slate-200 italic font-semibold hover:text-slate-400 underline transition-all'
-                            ref="no-referral" target='_blank'
+                            className='text-slate-400 italic font-semibold hover:text-slate-300 underline decoration-dotted transition-all'
+                            rel="no-referral" target='_blank'
                         >
                             {hash.slice(0,10)} ... {hash.slice(-8)}
                         </a> 
@@ -72,7 +72,7 @@ export const Send = () => {
             }
 
             <div className='h-full w-full px-[10pt] md:px-[20pt] py-[5pt]'>
-                <form className='h-full py-[20pt] w-full'>
+                <form className='h-full w-full'>
                     <div className='flex flex-col justify-center items-center h-auto'>
                         <FormInput onchange={handleInputChange} name="receiver" type="text" placeholder="0x4553.....2332" label="Receiver Wallet" />
                     </div>

@@ -75,6 +75,9 @@ export const TransactionProvider = ({ children }) => {
 
     const sendEthers = async () => {
         try{
+
+            let hash, error = ''
+            
             if(!ethereum) alert("Please Download Metamask to use this dApp")
             else{
                 console.log(formData)
@@ -88,36 +91,29 @@ export const TransactionProvider = ({ children }) => {
                 const amountInWei = formData.amount * (10 ** 18)
                 const amountInHex = `0x${amountInWei.toString(16)}`
 
-                console.log(amountInWei, amountInHex)
+                console.log({amountInWei, amountInHex})
 
-                ethereum.request({
+                try {
+                    const res = await ethereum.request({
                     method: 'eth_sendTransaction',
                     params: [
                         {
-                            from: connectedAccount,
-                            to: formData.receiver,
-                            value: amountInHex
-                        }
-                    ]
-                })
-                .then(async res => {
-                    console.log(res)
-                    setTrxHash(res)
-                })
-                .catch(e => {
-                    console.log(e)
-                    alert(e.message)
-                    return {
-                        trxError: e.message
-                    }
-                })
-
-                return !trxError ? (
-                    trxHash && {trxHash}
-                ) : (
-                    {trxError}
-                )
-
+                        from: connectedAccount,
+                        to: formData.receiver,
+                        value: amountInHex,
+                        },
+                    ],
+                    });
+            
+                    console.log({ hash: res });
+                    hash = res;
+                } catch (e) {
+                    console.log({ error: e.message });
+                    alert(e.message);
+                    error = e.message;
+                }
+            
+                return { hash, error };
             }
         }
         catch(e){
