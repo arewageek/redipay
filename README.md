@@ -56,10 +56,10 @@ npm install
 
 - Sepolia Eth (SETH) - [View on Sepolia Etherscan](https://sepolia.etherscan.io/token/yourtokenaddress)
 - Georli Eth - [View on Georli Etherscan](https://georli.etherscan.io/token/yourtokenaddress)
-- Polygon Mumbai = [View on Polygon Mumbai](https://mumbai.polygonscan.com/yourtokenaddress)
+- Polygon Mumbai - [View on Polygon Mumbai](https://mumbai.polygonscan.com/yourtokenaddress)
 
 - Ethereum Mainnet - [View on Etherscan](https://etherscan.io/token/yourtokenaddress)
-- Polygon Mainnet = [View on Polygon Mumbai](https://polygonscan.com/yourtokenaddress)
+- Polygon Mainnet - [View on Polygon Mumbai](https://polygonscan.com/yourtokenaddress)
 
 ## Contributing
 
